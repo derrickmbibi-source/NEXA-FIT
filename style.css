@@ -90,6 +90,26 @@ body {
     text-align: center;
     gap: 1.5rem;
     list-style-type: none;
+    position: static;
+    transform: none;
+    height: auto;
+    width: auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+/* Desktop: always show menu */
+@media (min-width: 881px) {
+    .navbar-container .navbar-menu {
+        display: flex !important;
+        transform: none !important;
+    }
+    
+    .navbar-toggle {
+        display: none !important;
+    }
 }
 
 .navbar-container .navbar-menu li a{
@@ -130,12 +150,16 @@ body {
     .navbar {
         backdrop-filter: none;
     }
+    
+    .navbar-container {
+        overflow: visible;
+    }
 
     .navbar-container .navbar-menu{
         flex-direction: column;
         align-items: flex-start;
         gap: 1.7rem !important;
-        position: absolute;
+        position: fixed;
         height: 100vh;
         width: 250px;
         top: 0;
@@ -146,6 +170,7 @@ body {
         backdrop-filter: blur(10px);
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
+        z-index: 998;
     }
 
     .navbar-container .navbar-menu.active {
@@ -338,9 +363,10 @@ span {
 
 /* Responsive Styles for Mobile and Tablet */
 @media (max-width: 768px) {
-    /* Base text scaling */
+    /* Base settings */
     body {
         margin: 5px;
+        padding: 0;
     }
     
     .navbar {
@@ -348,13 +374,14 @@ span {
         height: 70px;
     }
     
-    .navbar-logo {
-        font-size: 1.5rem;
-        margin-left: 10px;
-    }
-    
     .navbar-container {
         padding: 0 10px;
+    }
+    
+    .navbar-logo {
+        font-size: 1.4rem;
+        margin-left: 5px;
+        white-space: nowrap;
     }
     
     /* Home section */
@@ -370,11 +397,11 @@ span {
     }
     
     .home-content h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     .home-content h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .home-content p {
@@ -384,7 +411,7 @@ span {
     .home-img img {
         width: 100%;
         height: auto;
-        max-height: 40vh;
+        max-height: 35vh;
     }
     
     /* Services */
@@ -1240,4 +1267,8 @@ hr {
         scale: 1;
         translate: 0 0;
     }
+}
+
+.service {
+    font-size: 1.8rem;
 }

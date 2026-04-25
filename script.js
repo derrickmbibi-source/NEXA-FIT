@@ -1,6 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navbarToggle = document.querySelector('.navbar-toggle');
     const navbarMenu = document.querySelector('.navbar-menu');
+    
+    // Handle menu visibility based on screen size
+    function handleMenuVisibility() {
+        if (window.innerWidth > 880) {
+            // Desktop: always show menu
+            navbarMenu.classList.add('active');
+            navbarToggle.style.display = 'none';
+        } else {
+            // Mobile: hide menu by default, show toggle
+            navbarMenu.classList.remove('active');
+            navbarToggle.style.display = 'block';
+        }
+    }
+    
+    // Run on load
+    handleMenuVisibility();
+    
+    // Run on resize
+    window.addEventListener('resize', handleMenuVisibility);
+    
     navbarToggle.addEventListener('click', () => {
         navbarToggle.classList.toggle('active');
         navbarMenu.classList.toggle('active');
